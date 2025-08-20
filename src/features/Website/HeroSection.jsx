@@ -2,12 +2,13 @@
 
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
+import heroA  from '../../assets/WebsiteImage/heroA.jpg'
 
 export default function HeroSection() {
   // Value Comparison Slider State
-  const [currentSlide, setCurrentSlide] = useState(0);
-    const [translateX, setTranslateX] = useState(0)
-  const totalSlides = 3;
+  // const [currentSlide, setCurrentSlide] = useState(0);
+  //   const [translateX, setTranslateX] = useState(0)
+  // const totalSlides = 3;
 
   // Auto-slide functionality
   useEffect(() => {
@@ -17,6 +18,19 @@ export default function HeroSection() {
 
     return () => clearInterval(slideInterval);
   }, []);
+
+  // const goToSlide = (index) => {
+  //   setCurrentSlide(index);
+  // };
+
+
+
+
+
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+  const totalSlides = 3; // Kitne slides hai
+  const translateX = -currentSlide * 100; // Slide ka offset
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
@@ -37,13 +51,13 @@ export default function HeroSection() {
               />
             </div>
             <nav className="flex space-x-8">
-              <Link href="/patient/login" className="text-gray-700 hover:text-indigo-600 transition-all duration-300 cursor-pointer font-medium">
+              <Link to={"/PatientPortal"} className="text-gray-700 hover:text-indigo-600 transition-all duration-300 cursor-pointer font-medium">
                 Patient Portal
               </Link>
-              <Link href="/practitioner/login" className="text-gray-700 hover:text-indigo-600 transition-all duration-300 cursor-pointer font-medium">
+              <Link to={"/PractitionerPortal"} className="text-gray-700 hover:text-indigo-600 transition-all duration-300 cursor-pointer font-medium">
                 Practitioner Portal
               </Link>
-              <Link href="/admin/login" className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 cursor-pointer whitespace-nowrap font-medium">
+              <Link to={"/Login"} className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 cursor-pointer whitespace-nowrap font-medium">
                 Admin Portal
               </Link>
             </nav>
@@ -56,11 +70,14 @@ export default function HeroSection() {
         {/* Background Image with better positioning and lighter overlay */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/90"></div>
-          <img 
+          {/* <img 
             src="https://readdy.ai/api/search-image?query=Professional%20caring%20Australian%20doctor%20with%20stethoscope%20gently%20examining%20elderly%20patient%20in%20bright%20modern%20medical%20clinic%2C%20warm%20sunlight%20streaming%20through%20large%20windows%2C%20clean%20white%20medical%20environment%20with%20natural%20lighting%2C%20compassionate%20healthcare%20consultation%20showing%20trust%20and%20care%2C%20professional%20medical%20setting%20with%20soft%20lighting%20and%20comfortable%20atmosphere%2C%20doctor%20showing%20genuine%20concern%20for%20patient%20wellbeing&width=1400&height=800&seq=hero-clear-medical-002&orientation=landscape"
             alt="Professional doctor providing compassionate medical care"
             className="w-full h-full object-cover object-center opacity-30"
-          />
+          /> */}
+
+          <img src={heroA} alt="Professional doctor providing compassionate medical care"
+            className="w-full h-full object-cover object-center opacity-30"/>
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
